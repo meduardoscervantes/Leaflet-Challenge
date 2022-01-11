@@ -52,3 +52,19 @@ d3.json(url).then(function (response) {
         }).bindPopup(`<h1>${"Val 1"}</h1> <hr> <h3>Points: ${"Val 2"}</h3>`).addTo(myMap);
     };
 });
+function addLegend(map) {
+    var legend = L.control({ position: "bottomright" });
+    legend.onAdd = function (myMap) {
+        var div = L.DomUtil.create("div", "legend");
+        div.innerHTML += '<h3>Depth</h3>';
+        div.innerHTML += '<i style="background: #4efc03"></i><span>-10 - 10</span><br>';
+        div.innerHTML += '<i style="background: #bafc03"></i><span>10 - 30</span><br>';
+        div.innerHTML += '<i style="background: #fcec03"></i><span>30 - 50</span><br>';
+        div.innerHTML += '<i style="background: #fc9003"></i><span>50 - 70</span><br>';
+        div.innerHTML += '<i style="background: #fc4903"></i><span>70 - 90</span><br>';
+        div.innerHTML += '<i style="background: #fc0303"></i><span>90+</span><br>';
+        return div;
+    }
+    legend.addTo(map);
+};
+addLegend(myMap);
