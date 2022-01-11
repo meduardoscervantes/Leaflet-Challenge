@@ -49,14 +49,14 @@ d3.json(url).then(function (response) {
             color: color,
             // Adjust the radius.
             radius: Math.sqrt(Math.abs(zCord)) * 10000
-        }).bindPopup(`<h1>${"Val 1"}</h1> <hr> <h3>Points: ${"Val 2"}</h3>`).addTo(myMap);
+        }).bindPopup(`<h1>${response.features[i].properties.place}</h1> <hr> <h3>Magnitude * 10 = ${response.features[i].properties.mag * 10}</h3>`).addTo(myMap);
     };
 });
 function addLegend(map) {
     var legend = L.control({ position: "bottomright" });
     legend.onAdd = function (myMap) {
         var div = L.DomUtil.create("div", "legend");
-        div.innerHTML += '<h3>Depth</h3>';
+        div.innerHTML += '<h3>Depth (km)</h3>';
         div.innerHTML += '<i style="background: #4efc03"></i><span>-10 - 10</span><br>';
         div.innerHTML += '<i style="background: #bafc03"></i><span>10 - 30</span><br>';
         div.innerHTML += '<i style="background: #fcec03"></i><span>30 - 50</span><br>';
